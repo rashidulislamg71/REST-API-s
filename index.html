@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <section class="flex  justify-center items-center gap-20">
+    <div class="p-[40px] bg-gray-100 shadow-3xl">
+      <div class="flex flex-col justify-center items-center ">
+        <h2 class="text-[25px] underline mb-[20px] "> Dog Images and Short Videos</h2>
+        <button
+          class="cursor-pointer shadow-lg text-[17px] text-white py-[3px] px-[10px] rounded border-none bg-gray-500"
+          onclick="getRandomDogImage()">Get Dog Image and Video</button> <br> <br>
+        <div class="bg-white flex justify-center items-center mt-[-20px] border-2 rounded h-[320px] w-[320px]">
+
+          <img class="  h-[300px] w-[300px] " id="dog_img" src="" alt="Dog Image" style=" display: none;" />
+          <video class=" h-[300px] w-[300px]" id="dog_video" autoplay src="" style=" display: none;"></video>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-[40px] bg-gray-100 shadow-3xl">
+      <div class="flex flex-col justify-center items-center ">
+        <h2 class="text-[25px] underline mb-[20px]">Random Cat Images</h2>
+        <button class="cursor-pointer shadow-lg text-[17px] text-white py-[3px] px-[10px] rounded border-none bg-gray-500"
+          onclick="getRandomCatImage()">Get Cat Images</button> <br> <br>
+        <div class="bg-white flex justify-center items-center mt-[-20px] border-2 rounded h-[320px] w-[320px]">
+
+          <img class="  h-[300px] w-[300px] " id="catImage" src="" alt="Dog Image" />
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <section class="my-[70px] flex items-center justify-center">
+    <div class="flex items-center flex-col gap-3 border-2 p-[20px] w-[400px] max-h-[200px] align-center">
+      <button
+          class="cursor-pointer shadow-lg text-[17px] text-white py-[3px] px-[10px] rounded border-none bg-gray-500"
+          onclick="getRandomDogImage()">Read Random Quotes</button> 
+          <div class=" align-center text-bold text-green-500 italic">
+            <p id="new">" "</p>
+          </div>
+    </div>
+  </section>
+</body>
+
+</html>
