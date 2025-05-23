@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Country University Search</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+    ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>দেশের নাম লিখুন:</h2>
+  <input type="text" id="search" placeholder="যেমনঃ Bangladesh">
+  <ul id="university-list"></ul>
+
+  <script>
+    const searchInput = document.getElementById('search');
+    const list = document.getElementById('university-list');
+
+    searchInput.addEventListener('input', async function () {
+      const country = searchInput.value.trim();
+
+      // অন্তত ২ অক্ষর লিখলে সার্চ শুরু হবে
+      if (country.length < 2) {
+        list.innerHTML = '';
+        return;
+      }
+
+      try {
+        const res = await fetch(`http://universities.hipolabs.com/search?country=${country}`);
+        const data = await res.json();
+
+        list.innerHTML = '';
+
+        if (data.length === 0) {
+          list.innerHTML = '<li>কোন ইউনিভার্সিটি পাওয়া যায়নি।</li>';
+          return;
+        }
+
+        data.forEach(university => {
+          const li = document.createElement('li');
+          li.textContent = university.name;
+          list.appendChild(li);
+        });
+      } catch (error) {
+        list.innerHTML = '<li>ডেটা লোড করতে সমস্যা হচ্ছে।</li>';
+        console.error(error);
+      }
+    });
+  </script>
+
+</body>
+</html>
